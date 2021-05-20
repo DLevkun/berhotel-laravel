@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 
 class SuiteFormController extends Controller {
-    public function store(Request $request) {
+    public function store(Request $request, $id) {
     $rules = [
         'name' => 'required|min:3|max:30',
             'surname' => 'required|min:2|max:30',
@@ -37,9 +37,8 @@ class SuiteFormController extends Controller {
 
     $validator = Validator::make($request->all(), $rules, $messages);
         if ($validator->fails()) {
-            return redirect('aftersuiteform')
-                        ->withErrors($validator)
-                        ->withInput($request->all());
+            return redirect('after-suiteform', ['id' => $id])
+                        ->withErrors($validator)->withInput($request->all());
         }
     
         $suite = new SuiteFormModel();
@@ -51,16 +50,18 @@ class SuiteFormController extends Controller {
         $suite->date2 = $request->input('date2');
         if ($request->input('sport')==null) {
             $suite->sport = 0;
-        } else $suite->sport = $request->input('sport');
+        } else $suite->sport = 1;
         if ($request->input('food')==null) {
             $suite->food = 0;
-        } else $suite->food = $request->input('food');
+        } else $suite->food = 1;
         if ($request->input('spa')==null) {
             $suite->spa = 0;
-        } else $suite->spa = $request->input('spa');
+        } else $suite->spa = 1;
         if ($request->input('pool')==null) {
             $suite->pool = 0;
-        } else $suite->pool = $request->input('pool');
+        } else $suite->pool = 1;
+
+        $suite->suite_id = $id;
 
         $suite->save();
 

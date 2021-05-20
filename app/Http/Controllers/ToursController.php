@@ -17,9 +17,8 @@ class ToursController extends Controller {
     }
 
     public function getInfo($id){
-        dd($id);
         $tour = Tours::find($id);
-        return view('aftertourform', ['tour' => $tour]);
+        return view('after-tourform', ['tour' => $tour]);
     }
 }
 

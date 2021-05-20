@@ -18,6 +18,11 @@ class RoomsController extends Controller
         return view('suiteinfo', ['room' => $room]);
     }
 
+    public function getInfo($id){
+        $room = Rooms::find($id);
+        return view('after-suiteform', ['room' => $room]);
+    }
+
     public function searchRoom(Request $req){
         $validation = $req->validate([
             'arrival-date' => 'date',

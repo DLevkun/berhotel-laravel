@@ -31,9 +31,9 @@ class TourFormController extends Controller {
                 'days.required' => "Будь ласка, виберіть кількість днів.",
                 'date.required' => "Будь ласка, виберіть бажану дату.",
                 'date.after:tomorrow' => "Ви вибрали неможливу дату."
-            ];
+        ];
+
         $validator = Validator::make($request->all(), $rules, $messages);
-        
         if ($validator->fails()) {
             return redirect()->route('after-tourform', ['id' => $id])
                         ->withErrors($validator);
@@ -56,9 +56,5 @@ class TourFormController extends Controller {
         
         return redirect()->route('tours-container')->with('success', 'Вашу заявку прийнято! Чекайте підтвердження.');
     }
-
-    /*public function redirect(Request $request, $id) {
-        return view('aftertourform', $id, $request->all());
-    }*/
    
 }

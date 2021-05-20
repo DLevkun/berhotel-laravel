@@ -15,37 +15,37 @@
 		<img src="img/Polygon_blue.svg" alt="poligon" class="transform">
 	</h1>	
     @include('inc.messages')
-    <form action="{{ route('room-form') }}" method="post">
+    <form action="{{ route('room-form'), $room->id }}" method="post">
 			@csrf
 			<div class="row">
 				<div class="single_input">
 					<p>Ім’я</p>
-					<input type="text" name="name" placeholder="Введіть ім'я" class="input">
+					<input type="text" name="name" placeholder="Введіть ім'я" class="input" value="{{ old('name') }}">
 				</div>
 				<div class="single_input">
 					<p>Прізвище</p>
-					<input type="text" name="surname" placeholder="Введіть прізвище" class="input">
+					<input type="text" name="surname" placeholder="Введіть прізвище" class="input" value="{{ old('surname') }}">
 				</div>
 			</div>
 			<div class="row">
 				<div class="single_input">
 					<p>Телефон</p>
-					<input type="text" name="phone" placeholder="Введіть телефон" class="input">
+					<input type="text" name="phone" placeholder="Введіть телефон" class="input" value="{{ old('phone') }}">
 				</div>
 				<div class="single_input">
 					<p>Електронна адреса</p>
-					<input type="text" name="mail" placeholder="Введіть e-mail" class="input">
+					<input type="text" name="mail" placeholder="Введіть e-mail" class="input" value="{{ old('mail') }}">
 				</div>
 			</div>
 			<p class="period">Період</p>
 			<div class="special_row">
 				<div class="single_input_inline">
 					<p>з</p>
-					<input type="date" name="date1" class="input_inline">
+					<input type="date" name="date1" class="input_inline" value="{{ old('date1') }}">
 				</div>
 				<div class="single_input_inline">
 					<p>по</p>
-					<input type="date" name="date2" class="input_inline">
+					<input type="date" name="date2" class="input_inline" value="{{ old('date2') }}">
 				</div>
 			</div>
 			<div class="special_row">

@@ -20,4 +20,6 @@ Route::post('/suiteinfo/submit/{id}', 'SuiteFormController@store')->name('room-f
 
 Route::post('/tourinfo/submit/{id}', 'TourFormController@store')->name('tour-form');
 
-Route::post('/tourinfo/form/{id}', 'ToursController@getInfo')->name('after-tourform');
+Route::get('/tourinfo/submit/{id}/form', 'ToursController@getInfo')->name('after-tourform');
+
+Route::get('/suiteinfo/submit/{id}/form', 'RoomsController@getInfo')->name('after-suiteform');
